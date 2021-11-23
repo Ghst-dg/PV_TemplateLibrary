@@ -32,8 +32,8 @@ namespace PV
 			if (front > back)
 				Deck();
 		}
-		void seekFront() { return elements[front]; }
-		void seekBack() { return elements[back]; }
+		T seekFront() { return elements[front]; }
+		T seekBack() { return elements[back]; }
 		int front() { return front; }
 		int back() { return back; }
 		int size() { return back + 1; }
