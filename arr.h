@@ -7,7 +7,7 @@ namespace PV
 	class Array
 	{
 	public:
-		int Size();
+		ull Size();
 		bool Empty();
 
 		T& operator[](ull index);
@@ -23,7 +23,7 @@ namespace PV
 	};
 
 	template<typename T,ull S>
-	inline int Array<T, S>::Size()
+	inline ull Array<T, S>::Size()
 	{
 		return S;
 	}
