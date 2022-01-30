@@ -1,31 +1,59 @@
 #pragma once
+#define ull unsigned long long int
 
 namespace PV
 {
-	template<typename T, int S>
+	template<typename T, ull S>
 	class Stack
 	{
 	public:
-		Stack(){ top = -1;}
-		void push(T item)
-		{
-			top++;
-			elements[top] = item;
-		}
-		void pop() { --top; }
-		T seek() { return elements[top]; }
-		int size() { return top + 1; }
-		T at(int index) { return elements[index]; }
-		void clear() { Stack() }
-		int search(T value)
-		{
-			for (int i = 0; i <= top; i++)
-				if (elements[i] == value)
-					return i;
-		}
+		bool Empty();
+		ull Size();
+		T& Top();
+
+		T Push(T value);
+		T Pop();
 
 	private:
-		T elements[S] = { 0 };
-		int top = -1;
+		T stack[S] = { 0 };
+		ull top = -1;
 	};
+
+	template<typename T, ull S>
+	inline bool Stack<T, S>::Empty()
+	{
+		if (top == -1)
+			return true;
+
+		return false;
+	}
+
+	template<typename T, ull S>
+	inline ull Stack<T, S>::Size()
+	{
+		return top + 1;
+	}
+
+	template<typename T, ull S>
+	inline T& Stack<T, S>::Top()
+	{
+		return stack[top];
+	}
+
+	template<typename T, ull S>
+	inline T Stack<T, S>::Push(T value)
+	{
+		++top;
+		stack[top] = value;
+		return stack[top];
+	}
+
+	template<typename T, ull S>
+	inline T Stack<T, S>::Pop()
+	{
+		T value = stack[top];
+		stack[top] = 0;
+		--top;
+		return value;
+	}
 }
