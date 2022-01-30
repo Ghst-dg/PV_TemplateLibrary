@@ -12,8 +12,8 @@ namespace PV
 
 		T& operator[](ull index);
 		T& At(ull index);
-		T Front();
-		T Back();
+		T& Front();
+		T& Back();
 
 		void Fill(ull value, ull first = 0, ull last = S);
 		void Swap(ull index1, ull index2);
@@ -50,13 +50,13 @@ namespace PV
 	}
 
 	template<typename T, ull S>
-	inline T Array<T, S>::Front()
+	inline T& Array<T, S>::Front()
 	{
 		return array[0];
 	}
 
 	template<typename T, ull S>
-	inline T Array<T, S>::Back()
+	inline T& Array<T, S>::Back()
 	{
 		return array[S - 1];
 	}
