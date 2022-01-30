@@ -13,7 +13,7 @@ namespace PV
 		T& First();
 		T& Last();
 
-		T Push(ull value);
+		T Push(T value);
 		T Pop();
 
 	private:
@@ -52,7 +52,7 @@ namespace PV
 	}
 
 	template<typename T, ull S>
-	inline T Q<T, S>::Push(ull value)
+	inline T Q<T, S>::Push(T value)
 	{
 		if (front == -1)
 			front = 0;
