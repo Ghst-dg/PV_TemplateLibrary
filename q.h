@@ -1,41 +1,85 @@
 #pragma once
+#define ull unsigned long long int
 
 namespace PV
 {
-	template<typename T, int S>
+	template<typename T, ull S>
 	class Q
 	{
-	private:
-		Q() { front = -1; back = -1; }
-		void append(T item)
-		{
-			if (front < 0)
-				front = 0;
-
-			back++;
-			elements[back] = item;
-		}
-		void pop()
-		{
-			front++;
-			if (front > back)
-				Q();
-		}
-		T seek() { return elements[front]; }
-		int size() { return back + 1; }
-		int top() { return front; }
-		T at(int index) { return elements[front + index]; }
-		void clear() { Stack(); }
-		int search(T value)
-		{
-			for (int i = top; i <= back; i++)
-				if (elements[i] == value)
-					return i;
-		}
-
 	public:
-		T elements[S] = { 0 };
-		int front = -1;
-		int back = -1;
+		bool Empty();
+		ull Size();
+
+		T& First();
+		T& Last();
+
+		T Push(ull value);
+		T Pop();
+
+	private:
+		T q[S] = { 0 };
+		ull front = -1;
+		ull back = -1;
 	};
+
+	template<typename T, ull S>
+	inline bool Q<T, S>::Empty()
+	{
+		if (front == -1 && back == -1)
+			return true;
+
+		return false;
+	}
+
+	template<typename T, ull S>
+	inline ull Q<T, S>::Size()
+	{
+		if (front == -1 && back == -1)
+			return 0;
+
+		return back - front + 1;
+	}
+	template<typename T, ull S>
+	inline T& Q<T, S>::First()
+	{
+		return q[front];
+	}
+
+	template<typename T, ull S>
+	inline T& Q<T, S>::Last()
+	{
+		return q[back];
+	}
+
+	template<typename T, ull S>
+	inline T Q<T, S>::Push(ull value)
+	{
+		if (front == -1)
+			front = 0;
+
+		++back;
+		q[back] = value;
+
+		return q[back];
+	}
+
+	template<typename T, ull S>
+	inline T Q<T, S>::Pop()
+	{
+		T value = q[front];
+
+		if (front >= back)
+		{
+			front = -1;
+			back = -1;
+		}
+
+		else
+		{
+			q[front] = 0;
+			front++;
+		}
+
+		return value;
+	}
 }
