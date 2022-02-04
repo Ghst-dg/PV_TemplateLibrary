@@ -1,4 +1,5 @@
 #pragma once
+#include "arr.h"
 #define ull unsigned long long int
 
 namespace PV
@@ -17,7 +18,7 @@ namespace PV
 		T Pop();
 
 	private:
-		T q[S] = { 0 };
+		Array<T, S> q;
 		ull front = -1;
 		ull back = -1;
 	};

@@ -23,7 +23,6 @@ namespace PV
 
 		void Reverse();
 
-
 	private:
 		class Node
 		{
